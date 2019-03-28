@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ADatabaseOfIceAndFire.Models
 {
   public class House
@@ -6,7 +8,8 @@ namespace ADatabaseOfIceAndFire.Models
     public string HouseName { get; set; }
     public string HouseWords { get; set; }
     public bool Extinct { get; set; } = false;
-    public Character CharacterID { get; set; }
-
+    public string CoatOfArms { get; set; }
+    public int MyProperty { get; set; }
+    public List<Character> Characters { get; set; } = new List<Character>();
   }
 }

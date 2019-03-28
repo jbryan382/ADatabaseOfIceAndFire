@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using ADatabaseOfIceAndFire.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -43,5 +44,8 @@ namespace adatabaseoficeandfire
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
+
+    public DbSet<Character> Characters { get; set; }
+    public DbSet<House> Houses { get; set; }
   }
 }
