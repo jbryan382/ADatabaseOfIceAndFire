@@ -24,15 +24,17 @@ namespace ADatabaseOfIceAndFire.Controllers
     public ActionResult<IList<Character>> GetAllSpecies()
     {
       var characters = db.Characters.OrderBy(o => o.Name).ToList();
+
       return characters;
     }
 
-    // // GET api/values/5
-    // [HttpGet("{id}")]
-    // public ActionResult<string> Get(int id)
-    // {
-    //   return "value";
-    // }
+    // GET api/values/5
+    [HttpGet("{id}")]
+    public ActionResult<Character> Get(int id)
+    {
+      var house = db.Characters.FirstOrDefault(f => f.Id == id);
+      return house;
+    }
 
     // POST api/values
     [HttpPost]
@@ -50,10 +52,13 @@ namespace ADatabaseOfIceAndFire.Controllers
     // {
     // }
 
-    // // DELETE api/values/5
-    // [HttpDelete("{id}")]
-    // public void Delete(int id)
-    // {
-    // }
+    [HttpDelete("{id}")]
+    public ActionResult DeleteSingleCharacter(int id)
+    {
+      var character = db.Characters.FirstOrDefault(f => f.Id == id);
+      db.Characters.Remove(character);
+      db.SaveChanges();
+      return Ok();
+    }
   }
 }
