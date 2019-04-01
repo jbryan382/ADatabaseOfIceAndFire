@@ -9,7 +9,6 @@ namespace ADatabaseOfIceAndFire.Models
     public string HouseWords { get; set; }
     public bool Extinct { get; set; } = false;
     public string CoatOfArms { get; set; }
-    public int MyProperty { get; set; }
     public List<Character> Characters { get; set; } = new List<Character>();
   }
 }

@@ -21,7 +21,7 @@ namespace ADatabaseOfIceAndFire.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IList<Character>> GetAllSpecies()
+    public ActionResult<IList<Character>> GetAllCharacters()
     {
       var characters = db.Characters.OrderBy(o => o.Name).ToList();
 
@@ -47,10 +47,39 @@ namespace ADatabaseOfIceAndFire.Controllers
       return newCharacter;
     }
     // // PUT api/values/5
-    // [HttpPut("{id}")]
-    // public void Put(int id, [FromBody] string value)
-    // {
-    // }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutHouse(int id, House house)
+    {
+      if (id != house.Id)
+      {
+        return BadRequest();
+      }
+
+      db.Entry(house).State = EntityState.Modified;
+
+      try
+      {
+        await db.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!CharacterExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
+
+    private bool CharacterExists(int id)
+    {
+      throw new NotImplementedException();
+    }
 
     [HttpDelete("{id}")]
     public ActionResult DeleteSingleCharacter(int id)
