@@ -81,6 +81,14 @@ namespace dotnet_sdg_template.Controllers
 
       return CreatedAtAction("GetHouse", new { id = house.Id }, house);
     }
+    // [HttpPost]
+    // public async Task<ActionResult<House>> CreateHouse(House newHouse)
+    // {
+    //   _context.Houses.Add(newHouse);
+    //   // var house = await db.Characters.FirstOrDefaultAsync(f => f.Id == newCharacter.Id);
+    //   await _context.SaveChangesAsync();
+    //   return newHouse;
+    // }
 
     // DELETE: api/Houses/5
     [HttpDelete("{id}")]

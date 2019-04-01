@@ -42,7 +42,7 @@ namespace ADatabaseOfIceAndFire.Controllers
     {
       db.Characters.Add(newCharacter);
       // update the current capacity 
-      var house = await db.Characters.FirstOrDefaultAsync(f => f.Id == newCharacter.HouseId);
+      // var house = await db.Characters.FirstOrDefaultAsync(f => f.Id == newCharacter.Id);
       await db.SaveChangesAsync();
       return newCharacter;
     }
